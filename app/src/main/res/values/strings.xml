@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">urbanDictionaryApp</string>
+    <string name="til_hint">Type word to find definition...</string>
+    <string name="btn_text">search</string>
+    <string name="tbtn_textOff">Sort by Thumbs Up</string>
+    <string name="tbtn_textOn">Sort by Thumbs Down</string>
+</resources>
