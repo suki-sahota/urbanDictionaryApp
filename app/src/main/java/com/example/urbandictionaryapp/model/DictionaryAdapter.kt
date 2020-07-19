@@ -30,7 +30,7 @@ class DictionaryAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun sortThumbsUp() {
-        Collections.sort(dataSet, Comparator<DefinitionModel> { lhs, rhs ->
+        dataSet.sortWith(Comparator { lhs, rhs ->
             if (lhs.thumbs_up > rhs.thumbs_up) -1
             else if (lhs.thumbs_up < rhs.thumbs_up) 1
             else 0 })
@@ -38,7 +38,7 @@ class DictionaryAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun sortThumbsDown() {
-        Collections.sort(dataSet, Comparator<DefinitionModel> { lhs, rhs ->
+        dataSet.sortWith(Comparator { lhs, rhs ->
             if (lhs.thumbs_down > rhs.thumbs_down) -1
             else if (lhs.thumbs_down < rhs.thumbs_down) 1
             else 0 })
