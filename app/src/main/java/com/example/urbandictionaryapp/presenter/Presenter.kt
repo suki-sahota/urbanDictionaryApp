@@ -28,7 +28,7 @@ class Presenter {
             // Request customization: add request headers
             val requestBuilder = original.newBuilder()
                 .header("x-rapidapi-host", "mashape-community-urban-dictionary.p.rapidapi.com")
-                .header("x-rapidapi-key", "")
+                .header("x-rapidapi-key", "fb88c54fb8msh0ba1d92b8c43faep126fe1jsn0202dae556cc")
             val request = requestBuilder.build()
             chain.proceed(request)
         }

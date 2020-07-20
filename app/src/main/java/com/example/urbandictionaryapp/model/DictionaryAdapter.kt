@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.view.DefinitionVH
-import java.util.*
 import kotlin.Comparator
 
 class DictionaryAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
