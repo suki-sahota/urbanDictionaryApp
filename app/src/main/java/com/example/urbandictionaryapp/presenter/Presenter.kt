@@ -14,8 +14,8 @@ class Presenter {
 
 //    private val TAG = Presenter::class.java.simpleName // "Presenter"
 
-    var view: IMainActivity? = null
-    lateinit var dictionaryApi: DictionaryApi
+    private lateinit var view: IMainActivity
+    private lateinit var dictionaryApi: DictionaryApi
 
     fun onBind(view: IMainActivity) {
         this.view = view
@@ -44,35 +44,34 @@ class Presenter {
     }
 
     fun isEmptyInput(textInput: String): Boolean {
-        if (textInput.isEmpty()) {
-            return true
-        } else {
+        return if (textInput.isEmpty()) true
+        else {
             searchDictionary(textInput)
-            return false
+            false
         }
     }
 
     private fun searchDictionary(textInput: String) {
-        dictionaryApi?.getMeDefinitions(textInput)?.enqueue( // .enqueue for Asynchronous
+        dictionaryApi.getMeDefinitions(textInput).enqueue( // .enqueue for Asynchronous
             object : Callback<SearchModel> { // Object expression to create an object of an anonymous class
                 override fun onFailure( // No communication with server; failed response
                     call: Call<SearchModel>,
                     t: Throwable) {
-                    view?.dismissProgress()
-                    view?.showToast("Failed to communicate with server.")
+                    view.dismissProgress()
+                    view.showToast("Failed to communicate with server.")
                 }
 
                 override fun onResponse( // Will receive response code from server
                     call: Call<SearchModel>,
                     response: Response<SearchModel>
                 ) {
-                    view?.dismissProgress()
+                    view.dismissProgress()
                     if (response.isSuccessful) { // response code is 200-299
                         if (response.body()?.list?.size == 0) {
-                            view?.showToast("Sorry, that term is not in Urban Dictionary.")
+                            view.showToast("Sorry, that term is not in Urban Dictionary.")
                         } else {
                             response.body().let {
-                                view?.displayData((it?.list) as MutableList<DefinitionModel>)
+                                view.displayData((it?.list) as MutableList<DefinitionModel>)
                             }
                         }
                     }

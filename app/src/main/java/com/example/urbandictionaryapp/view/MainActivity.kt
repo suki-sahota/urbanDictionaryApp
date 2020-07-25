@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity(), IMainActivity {
 
 //    private val TAG = MainActivity::class.java.simpleName // "MainActivity"
 
-    val presenter: Presenter by lazy { Presenter() }
-    val adapter: DictionaryAdapter by lazy { DictionaryAdapter() }
+    private val presenter: Presenter by lazy { Presenter() }
+    private val adapter: DictionaryAdapter by lazy { DictionaryAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

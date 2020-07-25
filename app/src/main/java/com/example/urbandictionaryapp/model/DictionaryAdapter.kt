@@ -7,7 +7,7 @@ import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.view.DefinitionVH
 import kotlin.Comparator
 
-class DictionaryAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var dataSet: MutableList<DefinitionModel> = mutableListOf()
         set(value) { // Replaces whole dataSet with value
@@ -30,17 +30,23 @@ class DictionaryAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun sortThumbsUp() {
         dataSet.sortWith(Comparator { lhs, rhs ->
-            if (lhs.thumbs_up > rhs.thumbs_up) -1
-            else if (lhs.thumbs_up < rhs.thumbs_up) 1
-            else 0 })
+            when {
+                lhs.thumbs_up > rhs.thumbs_up -> -1
+                lhs.thumbs_up < rhs.thumbs_up -> 1
+                else -> 0
+            }
+        })
         notifyDataSetChanged()
     }
 
     fun sortThumbsDown() {
         dataSet.sortWith(Comparator { lhs, rhs ->
-            if (lhs.thumbs_down > rhs.thumbs_down) -1
-            else if (lhs.thumbs_down < rhs.thumbs_down) 1
-            else 0 })
+            when {
+                lhs.thumbs_down > rhs.thumbs_down -> -1
+                lhs.thumbs_down < rhs.thumbs_down -> 1
+                else -> 0
+            }
+        })
         notifyDataSetChanged()
     }
 
